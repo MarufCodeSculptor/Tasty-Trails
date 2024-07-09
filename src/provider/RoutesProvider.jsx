@@ -12,7 +12,6 @@ const route = createBrowserRouter([
       <div className="min-h-screen flex items-center justify-center flex-col gap-5">
         <h2 className="text-5xl font-bold "> 404 Page not found </h2>
         <Link to={'/'} className="btn btn-primary">
-          {' '}
           Back to home
         </Link>
       </div>
@@ -27,8 +26,12 @@ const route = createBrowserRouter([
         element: <OurMenu />,
       },
       {
+        path: '/order/:category',
+        element: <Order />,
+      },
+      {
         path: '/order',
-        element: <Order/>,
+        element: <Order />,
       },
     ],
   },

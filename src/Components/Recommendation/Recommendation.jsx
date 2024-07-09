@@ -1,6 +1,6 @@
 import useGetMenuData from '../../Hooks/useGetMenuData';
 import SectionHeading from '../SectionHeading';
-import RecommendationCard from './RecommendationCard';
+import FoodCard from './RecommendationCard';
 
 const Recommendation = () => {
   const data = useGetMenuData();
@@ -15,18 +15,17 @@ const Recommendation = () => {
     return array.slice(0, num);
   }
   const randomData = getRandomValues(data, 3);
-  console.log(randomData,'from randomData');
+  console.log(randomData, 'from randomData');
 
   return (
     <div>
-      
       <SectionHeading
         heading="chef Recommends"
         subHeading="- - - should try- - - "
       />
-      <div className='flex flex-col md:flex-row items-stretch   gap-5  '>
+      <div className="flex flex-col md:flex-row items-stretch gap-5  ">
         {randomData.map(item => (
-          <RecommendationCard key={item._id} item={item} />
+          <FoodCard key={item._id} item={item} />
         ))}
       </div>
     </div>

@@ -1,9 +1,24 @@
+
+import Cover from '../../Components/Shared/Cover';
+import TabsCatagories from '../../Components/TabsCatagories/TabsCatagories';
+import orderBanner from '../../assets/shop/banner2.jpg';
+
 const Order = () => {
+ 
+  const coverData = {
+    heading: 'our menu',
+    description: 'woul you like to try a dish',
+    opacity: true,
+    imageUrl: orderBanner,
+  };
+
+
   return (
     <div>
-      <h2 className="text-3xl font-bold text-center capitalize">
-        order page is loading...
-      </h2>
+      <div>
+        <Cover {...coverData}/>
+      </div>
+      <TabsCatagories/>
     </div>
   );
 };

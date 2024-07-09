@@ -5,7 +5,6 @@ import dessertBg from '../../assets/menu/dessert-bg.jpeg';
 import pizzaBg from '../../assets/menu/pizza-bg.jpg';
 import saladBg from '../../assets/menu/salad-bg.jpg';
 import soupBg from '../../assets/menu/soup-bg.jpg';
-import MenuDesert from './Menus/MenuDesert';
 import MenusHeading from './MenusHeading';
 import useGetMenuData from '../../Hooks/useGetMenuData';
 import Menus from '../../Components/Menus/Menus';
@@ -19,7 +18,6 @@ const OurMenu = () => {
   };
 
   const allMenus = useGetMenuData();
-
   const dessertMenus = allMenus.filter(item => item.category === 'dessert');
   const saladMenus = allMenus.filter(item => item.category === 'salad');
   const pizzaMenus = allMenus.filter(item => item.category === 'pizza');
@@ -56,6 +54,7 @@ const OurMenu = () => {
     },
   };
 
+  const button = 'Order Your Favourite Food';
   console.log('Menu Categories:', menuCategories);
 
   return (
@@ -71,22 +70,36 @@ const OurMenu = () => {
         <MenusHeading />
       </div>
 
-      <div className='mb-20'>
-        <Menus coverData={menuCategories.dessert} recipeData={dessertMenus} />
+      <div className="mb-20">
+        <Menus
+          coverData={menuCategories.dessert}
+          recipeData={dessertMenus}
+          button={button}
+        />
       </div>
 
-      <div className='mb-20'>
-        <Menus coverData={menuCategories.salad} recipeData={saladMenus} />
+      <div className="mb-20">
+        <Menus
+          coverData={menuCategories.salad}
+          recipeData={saladMenus}
+          button={button}
+        />
       </div>
 
-
-      <div className='mb-20'>
-        <Menus coverData={menuCategories.pizza} recipeData={pizzaMenus} />
+      <div className="mb-20">
+        <Menus
+          coverData={menuCategories.pizza}
+          recipeData={pizzaMenus}
+          button={button}
+        />
       </div>
-      <div className='mb-20'>
-        <Menus coverData={menuCategories.soup} recipeData={soupMenus} />
+      <div className="mb-20">
+        <Menus
+          coverData={menuCategories.soup}
+          recipeData={soupMenus}
+          button={button}
+        />
       </div>
-
     </div>
   );
 };

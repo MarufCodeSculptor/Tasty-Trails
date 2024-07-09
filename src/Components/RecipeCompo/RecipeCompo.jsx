@@ -1,6 +1,9 @@
+import { Link } from 'react-router-dom';
 import MenuItem from '../../pages/Shared/Menu/MenuItem';
 
-const RecipeCompo = ({ recipeData }) => {
+const RecipeCompo = ({ recipeData, button }) => {
+  const singleItem = recipeData[0];
+
   return (
     <div>
       <div>
@@ -9,6 +12,16 @@ const RecipeCompo = ({ recipeData }) => {
             <MenuItem key={index} item={item} />
           ))}
         </div>
+        {button && (
+          <div className="flex items-center justify-center">
+            <Link
+              to={`/order/${singleItem?.category}`}
+              className="btn mt-2 bg-transparent outline-none border-0 border-b-4 border-gray-300  hover:text-blue-600 hover:bg-transparent"
+            >
+              {button}
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -8,8 +8,7 @@ const Menu = () => {
   return (
     <section className="my-10">
       <SectionHeading heading={'From our menu'} subHeading={'check it out'} />
-
-      <RecipeCompo recipeData={popularItem} />
+      <RecipeCompo recipeData={popularItem} button={"View full menu"}/>
     </section>
   );
 };

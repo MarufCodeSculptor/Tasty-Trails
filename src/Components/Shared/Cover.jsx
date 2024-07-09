@@ -20,7 +20,7 @@ const Cover = ({ heading, description, opacity, imageUrl }) => {
             } rounded-lg  `}
           >
             <h2 className="text-5xl uppercase">{heading}</h2>
-            <p className="mt-2">{description}</p>
+            <p className="mt-2 uppercase">{description}</p>
           </div>
         </div>
       </Parallax>
