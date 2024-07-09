@@ -1,29 +1,15 @@
-const RecommendationCard = ({item}) => {
-         
-     const {image,name,recipe}=item;
+const RecommendationCard = ({ item }) => {
+  const { image, name, recipe } = item;
 
   return (
-    <div>
-      <div className="w-full max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-        <img
-          className="object-cover w-full h-56"
-          src={image}
-          alt="avatar"
-        />
+    <div className="flex-1">
+      <div className="w-full rounded-lg shadow-lg">
+        <img className="object-cover w-full" src={image} alt="avatar" />
 
-        <div className="py-5 text-center">
-          <a
-            href="#"
-            className="block text-xl font-bold text-gray-800 dark:text-white"
-            tabIndex="0"
-            role="link"
-          >
-            {name}
-          </a>
-          <span className="text-sm text-gray-700 dark:text-gray-200">
-         {recipe}
-          </span>
-          <button>  order now  </button>
+        <div className="py-5 flex flex-col items-center justify-center">
+          <h2 className="text-xl font-bold">{name}</h2>
+          <p className="text-sm ">{recipe}</p>
+          <button className="btn capitalize"> order now </button>
         </div>
       </div>
     </div>

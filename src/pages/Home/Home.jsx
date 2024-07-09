@@ -1,7 +1,8 @@
-import Boss from '../../Components/Boss/Boss';
+
 import Recommendation from '../../Components/Recommendation/Recommendation';
 import Menu from '../Shared/Menu/Menu';
 import Testimonials from '../Testimonials/Testimonials';
+import Boss from './Boss';
 import CallUs from './CallUs';
 import CarouselContainer from './Carousel';
 import Catagory from './Catagory';
@@ -12,10 +13,10 @@ const Home = () => {
     <div>
       <CarouselContainer />
       <Catagory />
-      <Boss />
+      <Boss/>
       <Menu />
-      <CallUs/>
-      <Recommendation/>
+      <CallUs />
+      <Recommendation />
       <Fetures />
       <Testimonials />
     </div>

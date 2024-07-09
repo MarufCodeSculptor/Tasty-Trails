@@ -24,7 +24,7 @@ const Recommendation = () => {
         heading="chef Recommends"
         subHeading="- - - should try- - - "
       />
-      <div className='grid grid-cols-1 md:grid-cols-3'>
+      <div className='flex flex-col md:flex-row items-stretch   gap-5  '>
         {randomData.map(item => (
           <RecommendationCard key={item._id} item={item} />
         ))}
