@@ -1,13 +1,13 @@
 const Cover = ({ heading, description, opacity, imageUrl }) => {
   return (
-    <div className="my-20">
+    
       <div
         className={`flex items-center justify-center p-40 text-center bg-center bg-no-repeat bg-cover`}
         style={{ backgroundImage: `url(${imageUrl})` }}
       >
         <div
           className={`md:w-[1096px] md:px-40 md:py-20   ${
-            (opacity && 'bg-gray-800 bg-opacity-30 text-white') ||
+            (opacity && 'bg-gray-800 bg-opacity-50 text-white') ||
             ' bg-white text-gray-950'
           } rounded-lg  `}
         >
@@ -15,7 +15,7 @@ const Cover = ({ heading, description, opacity, imageUrl }) => {
           <p className="mt-2">{description}</p>
         </div>
       </div>
-    </div>
+  
   );
 };
 

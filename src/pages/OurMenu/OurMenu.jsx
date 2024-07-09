@@ -1,13 +1,24 @@
 import { Helmet } from 'react-helmet';
+import Cover from '../../Components/Shared/Cover';
+import banner3 from '../../assets/menu/banner3.jpg'
 
 const OurMenu = () => {
+  const coverData = {
+    heading: 'our menu',
+    description:
+      "woul you like to try a dish",
+    opacity:true,
+    imageUrl:banner3,
+  };
+
   return (
     <div>
       <Helmet>
-      <title> Tasty_Trails|Our Menu </title>
+        <title> Tasty_Trails|Our Menu </title>
       </Helmet>
-      <div className="mt-16 min-h-screen border border-red-500">
-        <h2 className="text-5xl font-bold">Our menu</h2>
+
+      <div className="">
+        <Cover {...coverData} />
       </div>
     </div>
   );
