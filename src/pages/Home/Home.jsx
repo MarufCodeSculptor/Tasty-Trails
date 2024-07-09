@@ -1,4 +1,3 @@
-
 import Recommendation from '../../Components/Recommendation/Recommendation';
 import Menu from '../Shared/Menu/Menu';
 import Testimonials from '../Testimonials/Testimonials';
@@ -13,7 +12,7 @@ const Home = () => {
     <div>
       <CarouselContainer />
       <Catagory />
-      <Boss/>
+      <Boss />
       <Menu />
       <CallUs />
       <Recommendation />

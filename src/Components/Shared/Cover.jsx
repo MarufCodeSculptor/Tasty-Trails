@@ -3,7 +3,7 @@ const Cover = ({ heading, description, opacity, imageUrl }) => {
     
       <div
         className={`flex items-center justify-center p-40 text-center bg-center bg-no-repeat bg-cover`}
-        style={{ backgroundImage: `url(${imageUrl})` }}
+        style={{ backgroundImage:`url(${imageUrl})` }}
       >
         <div
           className={`md:w-[1096px] md:px-40 md:py-20   ${
@@ -11,7 +11,7 @@ const Cover = ({ heading, description, opacity, imageUrl }) => {
             ' bg-white text-gray-950'
           } rounded-lg  `}
         >
-          <h2 className="text-5xl uppercase">{heading}</h2>
+          <h2 className="text-5xl uppercase">{heading}</h2> 
           <p className="mt-2">{description}</p>
         </div>
       </div>
