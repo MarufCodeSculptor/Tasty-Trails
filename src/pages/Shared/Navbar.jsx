@@ -13,11 +13,10 @@ const Navbar = () => {
         <NavLink to={'/service'}> Service </NavLink>
       </li>
     </>
-    
   );
   return (
-    <div className='max-w-screen-xl mx-auto' >
-      <div className="navbar bg-base-100 bg-opacity-25 fixed z-10 text-white ">
+    <div className="fixed z-10 max-w-screen-xl w-full top-0 left-1/2 transform -translate-x-1/2 text-white bg-base-100 bg-opacity-30">
+      <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,7 +43,9 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <Link to={'/'} className="text-xl cursor-pointer">daisyUI</Link>
+          <Link to={'/'} className="cursor-pointer font-josefin">
+            <span className="font-bold text-3xl tracking-4">TastyTrails</span>
+          </Link>
         </div>
 
         <div className="navbar-center hidden lg:flex">
@@ -52,7 +53,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end">
-          <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end z-20 text-black">
             <div
               tabIndex={0}
               role="button"
@@ -60,7 +61,7 @@ const Navbar = () => {
             >
               <div className="w-10 rounded-full">
                 <img
-                  alt="Tailwind CSS Navbar component"
+                  alt="User Avatar"
                   src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                 />
               </div>
@@ -83,7 +84,6 @@ const Navbar = () => {
                 <a>Logout</a>
               </li>
             </ul>
-
           </div>
         </div>
       </div>

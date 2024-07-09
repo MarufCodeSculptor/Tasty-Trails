@@ -2,7 +2,7 @@ import SectionHeading from '../../Components/SectionHeading';
 
 const Fetures = () => {
   return (
-    <div className="my-20 bg-[url(https://i.ibb.co/qgWy1pR/featured-1.png)] bg-no-repeat bg-cover bg-center ">
+    <div className="my-20 bg-[url(https://i.ibb.co/qgWy1pR/featured-1.png)] bg-no-repeat bg-cover bg-center bg-fixed">
       <section className='bg-gray-800 bg-opacity-50 py-20'>
         {/* section heading */}
         <SectionHeading

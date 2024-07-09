@@ -4,17 +4,16 @@ import Footer from '../Shared/Footer';
 
 const Root = () => {
   return (
-    <>
-      <div>
-        <Navbar />
-      </div>
-      <div className='min-h-outlet border-2 border-pink-400 rounded-lg'>
+    <div className="">
+      <Navbar />
+
+      <div className="min-h-outlet  rounded-lg max-w-screen-xl mx-auto">
         <Outlet />
       </div>
       <div>
-        <Footer/>
+        <Footer />
       </div>
-    </>
+    </div>
   );
 };
 

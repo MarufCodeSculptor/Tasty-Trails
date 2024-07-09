@@ -21,6 +21,8 @@ const Menu = () => {
     getData();
   }, []);
 
+
+
   return (
     <section className="my-10">
       <SectionHeading heading={'From our menu'} subHeading={'check it out'} />

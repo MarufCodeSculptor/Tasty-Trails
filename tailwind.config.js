@@ -4,7 +4,13 @@ export default {
   theme: {
     extend: {
       minHeight: {
-        outlet:'calc(100vh - 80px)',
+        outlet: 'calc(100vh - 80px)',
+      },
+      letterSpacing: {
+        4: '.5em',
+      },
+      fontFamily: {
+        josefin: "'Josefin Sans','sans-serif'",
       },
     },
   },
