@@ -1,10 +1,8 @@
-
 import Cover from '../../Components/Shared/Cover';
 import TabsCatagories from '../../Components/TabsCatagories/TabsCatagories';
 import orderBanner from '../../assets/shop/banner2.jpg';
 
 const Order = () => {
- 
   const coverData = {
     heading: 'our menu',
     description: 'woul you like to try a dish',
@@ -12,13 +10,12 @@ const Order = () => {
     imageUrl: orderBanner,
   };
 
-
   return (
     <div>
       <div>
-        <Cover {...coverData}/>
+        <Cover {...coverData} />
       </div>
-      <TabsCatagories/>
+      <TabsCatagories />
     </div>
   );
 };

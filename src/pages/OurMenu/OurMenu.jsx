@@ -18,10 +18,12 @@ const OurMenu = () => {
   };
 
   const allMenus = useGetMenuData();
-  const dessertMenus = allMenus.filter(item => item.category === 'dessert');
-  const saladMenus = allMenus.filter(item => item.category === 'salad');
-  const pizzaMenus = allMenus.filter(item => item.category === 'pizza');
-  const soupMenus = allMenus.filter(item => item.category === 'soup');
+  console.log(allMenus, 'ladies and gentement please welcome form all menus ');
+
+  const dessertMenus = allMenus?.filter(item => item.category === 'dessert');
+  const saladMenus = allMenus?.filter(item => item.category === 'salad');
+  const pizzaMenus = allMenus?.filter(item => item.category === 'pizza');
+  const soupMenus = allMenus?.filter(item => item.category === 'soup');
 
   const menuCategories = {
     dessert: {

@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
+import useAxiosSecure from './useAxiosSecure';
 
-const useGetMenuData = () => {
+const  useGetMenuData = () => {
   const [data, setData] = useState([]);
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const dataJson = await fetch('/menu.json');
-        const data = await dataJson.json();
+        const { data } = await axiosSecure.get('/menus');
         setData(data);
       } catch (err) {
         console.log(err?.messate);
@@ -15,7 +16,6 @@ const useGetMenuData = () => {
     };
     getData();
   }, []);
-  
 
   return data;
 };

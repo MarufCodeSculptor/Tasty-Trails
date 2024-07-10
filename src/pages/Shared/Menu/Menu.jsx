@@ -4,7 +4,8 @@ import useGetMenuData from '../../../Hooks/useGetMenuData';
 
 const Menu = () => {
   const data = useGetMenuData();
-  const popularItem = data.filter(item => item.category === 'popular');
+  console.log(import.meta.env.VITE_BASE_URL,'fucken menu data');
+  const popularItem = data?.filter(item => item.category === 'popular');
   return (
     <section className="my-10">
       <SectionHeading heading={'From our menu'} subHeading={'check it out'} />
