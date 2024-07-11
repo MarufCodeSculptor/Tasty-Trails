@@ -1,4 +1,6 @@
+
 import Cover from '../../Components/Shared/Cover.jsx';
+
 
 const Boss = () => {
   const coverData = {
@@ -8,6 +10,9 @@ const Boss = () => {
     opacity: false,
     imageUrl: 'https://i.ibb.co/tQ5ySTk/chef-service.jpg',
   };
+ 
+
+  
 
   return (
     <div className='my-20'>

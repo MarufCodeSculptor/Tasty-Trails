@@ -4,6 +4,7 @@ import Root from '../pages/Root/Root';
 import OurMenu from '../pages/OurMenu/OurMenu';
 import Order from '../pages/Order/Order';
 import Login from '../pages/Authentication/Login';
+import SignUp from '../pages/Authentication/SignUp';
 
 const route = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const route = createBrowserRouter([
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/signup',
+    element: <SignUp />,
   },
 ]);
 

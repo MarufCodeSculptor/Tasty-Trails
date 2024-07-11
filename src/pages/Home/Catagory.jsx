@@ -10,6 +10,7 @@ import img5 from '../../assets/home/slide5.jpg';
 import SectionHeading from '../../Components/SectionHeading';
 
 const Catagory = () => {
+ 
   return (
     <div>
       <div>
