@@ -2,16 +2,25 @@ import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const FoodCard = ({ item }) => {
   const { image, name, recipe, _id, price } = item;
   console.log(price);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
 
-  const handleAddToCart = (item) => {
+  const handleAddToCart = async (item) => {
     const userName = user?.displayName;
     const userEmail = user?.email;
+    const cartData = {
+      itemID: _id,
+      userName: userName,
+      userEmail: userEmail,
+      name,
+      image,
+    };
 
     if (user && userEmail) {
       Swal.fire({
@@ -23,6 +32,19 @@ const FoodCard = ({ item }) => {
         cancelButtonText: "No",
       }).then((result) => {
         if (result.isConfirmed) {
+          try {
+            axiosSecure.post("/carts", cartData).then((res) => {
+              if (res.data) {
+                console.log(res.data);
+                Swal.fire({
+                  title: "added to cart",
+                  icon: "success",
+                });
+              }
+            });
+          } catch (err) {
+            console.log(err);
+          }
           //  execute  posting function here
         }
       });
