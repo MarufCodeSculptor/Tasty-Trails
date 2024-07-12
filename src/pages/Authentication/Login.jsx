@@ -8,11 +8,14 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../provider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [submit, setSubmit] = useState(true);
   const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || "/";
 
   // capacha configurations=> => =>
   useEffect(() => {
@@ -28,16 +31,18 @@ const Login = () => {
       setSubmit(false);
     }
   };
+  // form configurations => =>
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  // login configurations=> =>
+  // login function =>
   const onSubmit = async ({ email, password }) => {
     try {
       const { user } = await login(email, password);
       if (user) {
+        navigate(from);
         toast.success("login successfully");
       }
     } catch (err) {
@@ -68,7 +73,9 @@ const Login = () => {
                 className="input input-bordered"
                 {...register("email", { required: true })}
               />
-              {errors.email && <span className="text-red-500"> email is required </span>}
+              {errors.email && (
+                <span className="text-red-500"> email is required </span>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -80,7 +87,9 @@ const Login = () => {
                 className="input input-bordered"
                 {...register("password", { required: true })}
               />
-               {errors.password && <span className="text-red-500" > password  is required </span>}
+              {errors.password && (
+                <span className="text-red-500"> password is required </span>
+              )}
             </div>
             {/* catpcha =>  */}
             <div className="form-control">
@@ -98,7 +107,12 @@ const Login = () => {
               {submit && <button className="btn btn-primary">Login</button>}
             </div>
           </form>
-          <p> don't have  an acount please  <Link to={'/register'} className="link"  >  Sign up </Link>   </p>
+          <p>
+            dont have an acount please
+            <Link to={"/register"} className="link">
+              Sign up
+            </Link>
+          </p>
         </div>
       </div>
     </div>

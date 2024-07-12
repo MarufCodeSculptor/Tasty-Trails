@@ -2,10 +2,11 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const { signUp } = useContext(AuthContext);
+  const { signUp, updateUserProfile } = useContext(AuthContext);
+  const navigate=useNavigate();
   const {
     register,
     handleSubmit,
@@ -13,12 +14,17 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async ({ email, password }) => {
+  const onSubmit = async ({ email, password, imageUrl, name }) => {
     // send data to server =>
     try {
       const { user } = await signUp(email, password);
+      if (user) {
+        await updateUserProfile(name, imageUrl);
+      }
       if (user.accessToken) {
-        reset()
+        reset();
+        navigate('/')
+        
         Swal.fire({
           title: "Login success",
           icon: "success",
@@ -28,6 +34,10 @@ const Register = () => {
       }
     } catch (err) {
       console.log(err?.message);
+      Swal.fire({
+        title: err.message,
+        icon: "error",
+      });
     }
   };
 
@@ -99,7 +109,13 @@ const Register = () => {
               <button className="btn btn-primary"> SignUp </button>
             </div>
           </form>
-          <p>allready have  an acount please  <Link to={'/login'} className="link"  >  Login </Link>   </p>
+          <p>
+            allready have an acount please{" "}
+            <Link to={"/login"} className="link">
+              {" "}
+              Login{" "}
+            </Link>{" "}
+          </p>
         </div>
       </div>
     </div>
