@@ -21,6 +21,7 @@ const Register = () => {
       }
     } catch (err) {
       console.log(err?.message);
+      toast.error(err?.message)
     }
   };
 
@@ -63,8 +64,16 @@ const Register = () => {
               <input
                 className="input input-bordered"
                 placeholder="enter password "
-                {...register("password")}
+                {...register("password", {
+                  required: "password is required",
+                  pattern: {
+                    value: /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/,
+                    message:
+                      "Password must be at least 8 characters long and contain at least one letter and one digit",
+                  },
+                })}
               />
+              {errors.password && <p>{errors.password.message}</p>}
             </div>
             <div className="form-control">
               <label className="label">
