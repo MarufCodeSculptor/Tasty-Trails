@@ -1,27 +1,33 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../provider/AuthProvider";
-import toast from "react-hot-toast";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const { signUp } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
-    console.log(data);
+  const onSubmit = async ({ email, password }) => {
     // send data to server =>
     try {
-      const { user } = await signUp(data.email, data.password);
+      const { user } = await signUp(email, password);
       if (user.accessToken) {
-        toast.success("sign up successfully");
+        reset()
+        Swal.fire({
+          title: "Login success",
+          icon: "success",
+          timer: 3000, // Auto close dialog after 3 seconds
+          timerProgressBar: true, // Display a progress bar
+        });
       }
     } catch (err) {
       console.log(err?.message);
-      toast.error(err?.message)
     }
   };
 
@@ -73,7 +79,9 @@ const Register = () => {
                   },
                 })}
               />
-              {errors.password && <p>{errors.password.message}</p>}
+              {errors.password && (
+                <p className="text-red-500">{errors.password.message}</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -91,6 +99,7 @@ const Register = () => {
               <button className="btn btn-primary"> SignUp </button>
             </div>
           </form>
+          <p>allready have  an acount please  <Link to={'/login'} className="link"  >  Login </Link>   </p>
         </div>
       </div>
     </div>

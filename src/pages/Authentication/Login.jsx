@@ -8,15 +8,17 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [submit, setSubmit] = useState(false);
+  const [submit, setSubmit] = useState(true);
   const { login } = useContext(AuthContext);
 
   // capacha configurations=> => =>
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
+
   const handleCaptcha = (e) => {
     e.preventDefault();
     if (e.target.value.length === 6 && validateCaptcha(e.target.value)) {
@@ -96,6 +98,7 @@ const Login = () => {
               {submit && <button className="btn btn-primary">Login</button>}
             </div>
           </form>
+          <p> don't have  an acount please  <Link to={'/register'} className="link"  >  Sign up </Link>   </p>
         </div>
       </div>
     </div>
