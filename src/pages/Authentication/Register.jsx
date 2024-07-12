@@ -1,32 +1,29 @@
-import { useContext, useRef } from "react";
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
 
-const SignUp = () => {
+const Register = () => {
   const { signUp } = useContext(AuthContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const nameRef = useRef(null);
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-  const photoRef = useRef(null);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // const name = nameRef.current.value;
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-    // const imageURL = photoRef.current.value;
-    // triggering sign up event =>
+  const onSubmit = async (data) => {
+    console.log(data);
+    // send data to server =>
     try {
-      const { user } = await signUp(email, password);
+      const { user } = await signUp(data.email, data.password);
       if (user.accessToken) {
-        toast.success("Your account has been signed up successfully");
+        toast.success("sign up successfully");
       }
     } catch (err) {
-      console.log(err);
-      toast.error(err?.message);
+      console.log(err?.message);
     }
   };
+
   return (
     <div className="hero min-h-screen max-w-screen-md  mx-auto">
       <div className="hero-content flex-col lg:flex-row">
@@ -38,17 +35,15 @@ const SignUp = () => {
         </div>
 
         <div className="card bg-base-100 w-full shadow-2xl md:w-1/2">
-          <form onSubmit={handleSubmit} className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text"> Name</span>
               </label>
               <input
-                type="Text"
-                ref={nameRef}
-                placeholder="Name"
                 className="input input-bordered"
-                required
+                placeholder="enter your name "
+                {...register("name")}
               />
             </div>
             <div className="form-control">
@@ -56,11 +51,9 @@ const SignUp = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="email"
-                ref={emailRef}
-                placeholder="email"
                 className="input input-bordered"
-                required
+                placeholder="enter Email "
+                {...register("email")}
               />
             </div>
             <div className="form-control">
@@ -68,11 +61,9 @@ const SignUp = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
-                ref={passwordRef}
-                placeholder="password"
                 className="input input-bordered"
-                required
+                placeholder="enter password "
+                {...register("password")}
               />
             </div>
             <div className="form-control">
@@ -80,12 +71,11 @@ const SignUp = () => {
                 <span className="label-text">ImageURL</span>
               </label>
               <input
-                type="text"
-                ref={photoRef}
-                placeholder="Image URL"
                 className="input input-bordered"
-                required
+                placeholder="enter imageULR "
+                {...register("imageUrl", { required: true })}
               />
+              {errors.imageUrl && <span>This field is required</span>}
             </div>
 
             <div className="form-control mt-6">
@@ -98,4 +88,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Register;

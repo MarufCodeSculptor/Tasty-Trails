@@ -1,4 +1,6 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+
 import toast from "react-hot-toast";
 import {
   loadCaptchaEnginge,
@@ -9,7 +11,8 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
   const [submit, setSubmit] = useState(false);
-  const { login} = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
+
   // capacha configurations=> => =>
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -23,25 +26,21 @@ const Login = () => {
       setSubmit(false);
     }
   };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   // login configurations=> =>
-
-  const emailRef = useRef(null);
-  const passRef = useRef(null);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async ({ email, password }) => {
     try {
-      const { user } = await login(
-        emailRef.current.value,
-        passRef.current.value
-      );
-
+      const { user } = await login(email, password);
       if (user) {
-        toast.success("Login successful");
+        toast.success("login successfully");
       }
     } catch (err) {
       console.log(err);
-      toast.error(err?.messsage);
+      toast.error("login failed");
     }
   };
 
@@ -56,18 +55,18 @@ const Login = () => {
         </div>
 
         <div className="card bg-base-100 w-full shadow-2xl md:w-1/2">
-          <form onSubmit={handleSubmit} className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
-                ref={emailRef}
                 placeholder="email"
                 className="input input-bordered"
-                required
+                {...register("email", { required: true })}
               />
+              {errors.email && <span className="text-red-500"> email is required </span>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -75,11 +74,11 @@ const Login = () => {
               </label>
               <input
                 type="password"
-                ref={passRef}
                 placeholder="password"
                 className="input input-bordered"
-                required
+                {...register("password", { required: true })}
               />
+               {errors.password && <span className="text-red-500" > password  is required </span>}
             </div>
             {/* catpcha =>  */}
             <div className="form-control">
