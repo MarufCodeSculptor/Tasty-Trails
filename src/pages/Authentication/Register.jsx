@@ -3,10 +3,14 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
+import Spinner from "../../Components/Laoding/Spinner";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Register = () => {
-  const { signUp, updateUserProfile } = useContext(AuthContext);
-  const navigate=useNavigate();
+  const { signUp, updateUserProfile, setLoading, loading } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -15,21 +19,27 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = async ({ email, password, imageUrl, name }) => {
-    // send data to server =>
+    setLoading(true);
+
     try {
       const { user } = await signUp(email, password);
       if (user) {
         await updateUserProfile(name, imageUrl);
-      }
-      if (user.accessToken) {
+        const usersData = {
+          email: user?.email,
+          userName: user?.displayName,
+          imageUrl: user?.photoURL,
+          uid: user?.uid,
+          createdAt: new Date(),
+        };
+        const { data } = await axiosPublic.post("/users", usersData);
+        console.log(data);
+
         reset();
-        navigate('/')
-        
+        navigate("/");
         Swal.fire({
-          title: "Login success",
+          title: "Registration Successful",
           icon: "success",
-          timer: 3000, // Auto close dialog after 3 seconds
-          timerProgressBar: true, // Display a progress bar
         });
       }
     } catch (err) {
@@ -40,6 +50,10 @@ const Register = () => {
       });
     }
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div className="hero min-h-screen max-w-screen-md  mx-auto">
@@ -110,11 +124,10 @@ const Register = () => {
             </div>
           </form>
           <p>
-            allready have an acount please{" "}
+            allready have an acount please
             <Link to={"/login"} className="link">
-              {" "}
-              Login{" "}
-            </Link>{" "}
+              Login
+            </Link>
           </p>
         </div>
       </div>
