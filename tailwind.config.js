@@ -11,7 +11,8 @@ export default {
       },
       fontFamily: {
         josefin: "'Josefin Sans','sans-serif'",
-        cinzel: "'Cinzel',serif",
+        cinzel: "'cinzel',serif",
+       
       },
       backgroundColor: {
         dashboardbg: "#D1A054",

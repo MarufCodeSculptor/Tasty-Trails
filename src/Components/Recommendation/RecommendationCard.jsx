@@ -22,6 +22,7 @@ const FoodCard = ({ item }) => {
       userEmail: userEmail,
       name,
       image,
+      price
     };
 
     if (user && userEmail) {
