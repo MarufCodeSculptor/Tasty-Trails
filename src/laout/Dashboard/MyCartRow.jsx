@@ -1,16 +1,44 @@
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useCartData from "../../Hooks/useCartData";
+import Swal from "sweetalert2";
+import { FaTrashCan } from "react-icons/fa6";
+
+
 
 const MyCartRow = ({ item }) => {
-  const { image, name, price ,_id} = item;
+  const { image, name, price, _id } = item;
+  const axiosSecure = useAxiosSecure();
+  const [, refetch] = useCartData();
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
+    try {
+      const proccied = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      });
 
-
-    console.log("delete action working ",_id);
-    toast.success('delete is working')
-
-
-
+      if (proccied.isConfirmed) {
+        await axiosSecure.delete(`/carts/${_id}`);
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your item has been deleted.",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+        });
+        refetch();
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.message);
+    }
   };
 
   return (
@@ -32,7 +60,9 @@ const MyCartRow = ({ item }) => {
       <td> {price} </td>
 
       <th>
-        <button onClick={handleDelete}  className="btn btn-ghost btn-xs"> Delete </button>
+        <button onClick={handleDelete} className="btn btn-ghost btn-lg">
+            <FaTrashCan  className="text-red-500" />
+        </button>
       </th>
     </tr>
   );
