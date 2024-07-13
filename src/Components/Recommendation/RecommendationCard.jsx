@@ -3,13 +3,15 @@ import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useCartData from "../../Hooks/useCartData";
 
 const FoodCard = ({ item }) => {
   const { image, name, recipe, _id, price } = item;
-  console.log(price);
+
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
+  const [,refetch] = useCartData();
 
   const handleAddToCart = async (item) => {
     const userName = user?.displayName;
@@ -40,6 +42,7 @@ const FoodCard = ({ item }) => {
                   title: "added to cart",
                   icon: "success",
                 });
+                refetch();
               }
             });
           } catch (err) {

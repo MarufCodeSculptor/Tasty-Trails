@@ -5,7 +5,10 @@ import OurMenu from "../pages/OurMenu/OurMenu";
 import Order from "../pages/Order/Order";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
-import PrivateRoute from "./PrivateRoute";
+// import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../laout/Dashboard";
+import DashboardHome from "../laout/Dashboard/DashboardHome";
+import MyCart from "../laout/Dashboard/MyCart";
 
 const route = createBrowserRouter([
   {
@@ -45,6 +48,21 @@ const route = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    children:[
+      {
+      path: "/dashboard/home",
+      element: <DashboardHome />
+    },
+      {
+      path: "/dashboard/cart",
+      element: <MyCart/>
+    },
+  
+  ]
   },
 ]);
 

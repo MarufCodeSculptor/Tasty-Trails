@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import useCartData from "../../Hooks/useCartData";
 
 const Navbar = () => {
+  const [cart] = useCartData();
 
   const { user, logOut } = useContext(AuthContext);
   const links = (
@@ -17,10 +19,10 @@ const Navbar = () => {
         <NavLink to={"/order"}> Order </NavLink>
       </li>
       <li>
-        <button className=" mx-2">
+        <Link to={'/dashboard/cart'} className=" mx-2">
           Cart
-          <div className="badge badge-secondary"> +1 </div>
-        </button>
+          <div className="badge badge-secondary"> +{cart.length} </div>
+        </Link>
       </li>
     </>
   );

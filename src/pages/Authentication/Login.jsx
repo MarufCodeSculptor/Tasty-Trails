@@ -9,18 +9,30 @@ import {
 } from "react-simple-captcha";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Spinner from "../../Components/Laoding/Spinner";
 
 const Login = () => {
   const [submit, setSubmit] = useState(true);
-  const { login } = useContext(AuthContext);
+  const { login, setLoading, loading } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from || "/";
-
   // capacha configurations=> => =>
+  const capchaConfig = async () => {
+    try {
+      if (!loading) {
+        await loadCaptchaEnginge(6);
+      }
+
+      // LoadCaptchaEnginge(6); // if you want to use reCAPTCHA instead of simple-captcha
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
-    loadCaptchaEnginge(6);
-  }, []);
+    capchaConfig();
+  }, [loading]);
 
   const handleCaptcha = (e) => {
     e.preventDefault();
@@ -31,6 +43,7 @@ const Login = () => {
       setSubmit(false);
     }
   };
+
   // form configurations => =>
   const {
     register,
@@ -40,6 +53,7 @@ const Login = () => {
   // login function =>
   const onSubmit = async ({ email, password }) => {
     try {
+      setLoading(true);
       const { user } = await login(email, password);
       if (user) {
         navigate(from);
@@ -51,6 +65,9 @@ const Login = () => {
     }
   };
 
+  if (loading) {
+    return <Spinner />;
+  }
   return (
     <div className="hero min-h-screen max-w-screen-md  mx-auto">
       <div className="hero-content flex-col lg:flex-row">
@@ -93,7 +110,9 @@ const Login = () => {
             </div>
             {/* catpcha =>  */}
             <div className="form-control">
-              <LoadCanvasTemplate />
+              <div className="border border-blue-500">
+                <LoadCanvasTemplate />
+              </div>
               <input
                 type="text"
                 name="capcha"

@@ -22,6 +22,7 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const login = (email, password) => {
+   
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -64,6 +65,7 @@ const AuthProvider = ({ children }) => {
   const contexData = {
     owner: "MuhammedMarufraju@gmail.com",
     user,
+    setLoading,
     setUser,
     signUp,
     login,
