@@ -1,49 +1,22 @@
-import {
-  FaCalendar,
-  FaHome,
-  FaList,
-  FaShoppingCart,
-  FaStar,
-} from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import { BiSolidFoodMenu } from "react-icons/bi";
 
 import { NavLink, Outlet } from "react-router-dom";
+import AdminsRoute from "./AdminsRoute";
+import UsersRoute from "./UsersRoute";
 
 const Dashboard = () => {
+  //to  loagd isAdmin data form servers users data  >
+  const isAdmin = true;
+
   return (
     <div className="flex">
+      {/*  navigations bar => =>  */}
       <div className="w-64 min-h-screen bg-purple-600 ">
         <ul className="menu flex flex-col gap-2">
-          <li>
-            <NavLink className="bg-pink-200" to="/dashboard/home">
-              <FaHome /> Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="bg-pink-200" to="/dashboard/cart">
-              <FaShoppingCart />
-              My Cart
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="bg-pink-200" to="/dashboard/reservations">
-              <FaCalendar />
-              Reservasions
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="bg-pink-200" to="/dashboard/review">
-              <FaStar />
-              reviews
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="bg-pink-200" to="/dashboard/review">
-              <FaList />
-              My Bookings
-            </NavLink>
-          </li>
+          {isAdmin ? <AdminsRoute /> : <UsersRoute />}
         </ul>
+
         <div className="divider"></div>
         <ul className="menu flex flex-col gap-2">
           <li>
@@ -60,7 +33,7 @@ const Dashboard = () => {
           </li>
         </ul>
       </div>
-
+      {/*   Outlet =>  */}
       <div className="flex-1 border-2 bg-blue-50 ">
         <div>
           <Outlet />

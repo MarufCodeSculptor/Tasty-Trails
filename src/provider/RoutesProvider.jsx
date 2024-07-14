@@ -9,6 +9,7 @@ import Register from "../pages/Authentication/Register";
 import Dashboard from "../laout/Dashboard";
 import DashboardHome from "../laout/Dashboard/DashboardHome";
 import MyCart from "../laout/Dashboard/MyCart";
+import User from "../laout/Dashboard/Users/User";
 
 const route = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const route = createBrowserRouter([
       {
       path: "/dashboard/cart",
       element: <MyCart/>
+    },
+      {
+      path: "/dashboard/users",
+      element: <User/>
     },
   
   ]

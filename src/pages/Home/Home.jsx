@@ -1,19 +1,14 @@
-import Recommendation from '../../Components/Recommendation/Recommendation';
+import Recommendation from "../../Components/Recommendation/Recommendation";
 
-
-import Menu from '../Shared/Menu/Menu';
-import Testimonials from '../Testimonials/Testimonials';
-import Boss from './Boss';
-import CallUs from './CallUs';
-import CarouselContainer from './Carousel';
-import Catagory from './Catagory';
-import Fetures from './Fetures';
+import Menu from "../Shared/Menu/Menu";
+import Testimonials from "../Testimonials/Testimonials";
+import Boss from "./Boss";
+import CallUs from "./CallUs";
+import CarouselContainer from "./Carousel";
+import Catagory from "./Catagory";
+import Fetures from "./Fetures";
 
 const Home = () => {
- 
-   console.log('cursor is not working properly ');
-
-   
   return (
     <div>
       <CarouselContainer />

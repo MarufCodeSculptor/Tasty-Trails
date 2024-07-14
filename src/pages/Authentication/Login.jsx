@@ -10,6 +10,7 @@ import {
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Spinner from "../../Components/Laoding/Spinner";
+import GoogleLogin from "../../Components/Shared/GoogleLogin";
 
 const Login = () => {
   const [submit, setSubmit] = useState(true);
@@ -126,12 +127,19 @@ const Login = () => {
               {submit && <button className="btn btn-primary">Login</button>}
             </div>
           </form>
-          <p>
-            dont have an acount please
-            <Link to={"/register"} className="link">
-              Sign up
-            </Link>
-          </p>
+          <div className="card-body">
+            <div className="divider mt-0"></div>
+            <p>
+              dont have an acount please
+              <Link to={"/register"} className="link mx-2 text-blue-800 ">
+                Register
+              </Link>
+            </p>
+            <div className="divider"></div>
+            <div className="flex items-center justify-center">
+            <GoogleLogin />
+            </div>
+          </div>
         </div>
       </div>
     </div>
