@@ -10,7 +10,37 @@ const UserRow = ({ user, index }) => {
   const axiosSecure = useAxiosSecure();
   const [, refetch] = useUsers();
 
+  const handleRole = async (user) => {
+    //  trough a dialogue box for asking is he agree to make admin or no t
+    const response = await Swal.fire({
+      title: "Are you sure?",
+      text: "You want to make this user admin?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, make it admin!",
+    });
+    if (response.isConfirmed) {
+      try {
+        const { data } = await axiosSecure.patch(`/users/role/${user._id}`, {
+          role: "admin",
+        });
+        console.log("hay sinamika", data);
+        if (data.modifiedCount > 0) {
+          toast.success("User role updated successfully");
+          refetch();
+        }
+      } catch (error) {
+        toast.error("Failed to update user role");
+        console.error(error);
+      }
+    }
+  };
+
   const handleDelete = async () => {
+    //  todo : have to cheack user is admin or not if admin then delete he can delete user  if not
+
     //  make a asking before delete with Sweetalert2
     const result = await Swal.fire({
       title: "Are you sure?",
@@ -57,11 +87,14 @@ const UserRow = ({ user, index }) => {
       <td> {email} </td>
 
       <td>
-        <BsPersonLinesFill />
+        {(user?.role === "admin" && "admin") || (
+          <button onClick={() => handleRole(user)} className="btn">
+            <BsPersonLinesFill />
+          </button>
+        )}
       </td>
       <th>
         <button onClick={handleDelete} className="btn btn-ghost btn-lg">
-          {" "}
           <MdDelete className="text-red-700" />
         </button>
       </th>

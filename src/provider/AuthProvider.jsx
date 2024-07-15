@@ -11,12 +11,15 @@ import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
 import Swal from "sweetalert2";
 
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+
 export const AuthContext = createContext(null);
 const providerOfGoogle = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
 
   const signUp = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -51,8 +54,22 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
+      if (currentUser) {
+        const userInfo = { email: user?.email };
+        try {
+          const { data: token } = await axiosPublic.post("/jwt", userInfo);
+          console.log(token, "jwt token =><=<=");
+          localStorage.setItem('token', JSON.stringify(token)); 
+        } catch (err) {
+          console.log(err);
+        }
+
+        //  store token to the client
+      } else {
+        //  remove token if current user is not found >  token  prorably stored in the local storeage
+      }
       setLoading(false);
     });
 
