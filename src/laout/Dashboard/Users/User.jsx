@@ -2,8 +2,9 @@ import useUsers from "../../../Hooks/useUsers";
 import UserRow from "./UserRow";
 
 const User = () => {
-  const [users]= useUsers();
-  console.log(users);
+  const [users, refetch] = useUsers();
+  refetch();
+
   return (
     <div className="m-10 p-10 bg-white rounded-lg shadow-lg">
       <h2 className="text-center text-2xl font-bold">All USERS</h2>
