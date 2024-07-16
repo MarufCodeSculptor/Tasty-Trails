@@ -57,10 +57,11 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        const userInfo = { email: user?.email };
+        const userInfo = { email: currentUser?.email };
+       
+
         try {
           const { data: token } = await axiosPublic.post("/jwt", userInfo);
-
           localStorage.setItem("token", JSON.stringify(token));
         } catch (err) {
           console.log(err);

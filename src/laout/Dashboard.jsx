@@ -1,13 +1,14 @@
 import { FaHome } from "react-icons/fa";
 import { BiSolidFoodMenu } from "react-icons/bi";
-
 import { NavLink, Outlet } from "react-router-dom";
 import AdminsRoute from "./AdminsRoute";
 import UsersRoute from "./UsersRoute";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
-  //to  loagd isAdmin data form servers users data  >
-  const isAdmin = true;
+
+  const [isAdmin] = useAdmin();
+ 
 
   return (
     <div className="flex">
