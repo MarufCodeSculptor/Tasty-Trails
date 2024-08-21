@@ -1,18 +1,19 @@
-import { useEffect, useState } from 'react';
-import useAxiosSecure from './useAxiosSecure';
+import { useEffect, useState } from "react";
 
+import useAxiosPublic from "./useAxiosPublic";
 
-const  useGetMenuData = () => {
+const useGetMenuData = () => {
   const [data, setData] = useState([]);
-  const axiosSecure = useAxiosSecure();
+
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axiosSecure.get('/menus');
+        const { data } = await axiosPublic.get("/menus");
         setData(data);
       } catch (err) {
-        console.log(err?.messate);
+        console.log(err);
       }
     };
     getData();

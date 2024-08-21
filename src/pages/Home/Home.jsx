@@ -16,7 +16,7 @@ const Home = () => {
       <Boss />
       <Menu />
       <CallUs />
-      <Recommendation />
+      {/* <Recommendation /> */}
       <Fetures />
       <Testimonials />
     </div>

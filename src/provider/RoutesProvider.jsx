@@ -27,10 +27,12 @@ const route = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        
       },
       {
         path: "/menu",
         element: <OurMenu />,
+        
       },
       {
         path: "/order/:category",
@@ -42,6 +44,9 @@ const route = createBrowserRouter([
       },
     ],
   },
+
+
+  
   {
     path: "/login",
     element: <Login />,

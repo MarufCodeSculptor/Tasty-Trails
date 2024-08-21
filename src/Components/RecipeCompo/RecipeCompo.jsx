@@ -1,14 +1,21 @@
-import { Link } from 'react-router-dom';
-import MenuItem from '../../pages/Shared/Menu/MenuItem';
+import { Link } from "react-router-dom";
+import MenuItem from "../../pages/Shared/Menu/MenuItem";
 
 const RecipeCompo = ({ recipeData, button }) => {
   const singleItem = recipeData[0];
+  if (!recipeData.length)
+    return (
+      <div className="bg-red-500 p-5 text-white font-bold uppercase text-center rounded-lg">
+        {" "}
+        error from server{" "}
+      </div>
+    );
 
   return (
     <div>
       <div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center justify-center">
-          {recipeData.map((item, index) => (
+          {recipeData?.map((item, index) => (
             <MenuItem key={index} item={item} />
           ))}
         </div>

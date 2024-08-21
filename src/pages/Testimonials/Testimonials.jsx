@@ -22,7 +22,11 @@ const Testimonials = () => {
 
     getReviews``;
   }, []);
-  console.log(reviews);
+
+
+  // console.log(reviews);
+
+
   return (
     <div>
       <SectionHeading
