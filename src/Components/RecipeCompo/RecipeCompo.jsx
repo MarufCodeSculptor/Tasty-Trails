@@ -6,8 +6,7 @@ const RecipeCompo = ({ recipeData, button }) => {
   if (!recipeData.length)
     return (
       <div className="bg-red-500 p-5 text-white font-bold uppercase text-center rounded-lg">
-        {" "}
-        error from server{" "}
+        error from server
       </div>
     );
 
