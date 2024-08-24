@@ -14,8 +14,15 @@ const GoogleLogin = () => {
     try {
       const { user } = await googleSignIn();
       if (user) {
-        const userData = { email: user?.email };
-        const { data } = await axiosPublic.post("/users", userData);
+        const usersData = {
+          email: user?.email,
+          userName: user?.displayName,
+          imageUrl: user?.photoURL,
+          uid: user?.uid,
+          createdAt: new Date(),
+        };
+
+        const { data } = await axiosPublic.post("/users", usersData);
         console.log(data);
         Swal.fire({
           title: "Login Successful",

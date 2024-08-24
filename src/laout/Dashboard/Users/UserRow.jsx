@@ -7,6 +7,7 @@ import useUsers from "../../../Hooks/useUsers";
 
 const UserRow = ({ user, index }) => {
   const { email, imageUrl, userName, _id } = user;
+  console.log(user);
   const axiosSecure = useAxiosSecure();
   const [, refetch] = useUsers();
 
@@ -26,7 +27,9 @@ const UserRow = ({ user, index }) => {
         const { data } = await axiosSecure.patch(`/users/role/${user._id}`, {
           role: "admin",
         });
+
         console.log("hay sinamika", data);
+        
         if (data.modifiedCount > 0) {
           toast.success("User role updated successfully");
           refetch();
@@ -88,7 +91,7 @@ const UserRow = ({ user, index }) => {
 
       <td>
         {(user?.role === "admin" && "admin") || (
-          <button onClick={() => handleRole(user)} className="btn">
+          <button title="make admin" onClick={() => handleRole(user)} className="btn">
             <BsPersonLinesFill />
           </button>
         )}

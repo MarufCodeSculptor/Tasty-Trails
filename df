@@ -1,0 +1,173 @@
+[33mcommit e03550f5077e43692b02e72d652cda6811684584[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: MarufsLinux <Muhammedmarufraju@gmail.com>
+Date:   Thu Aug 22 22:03:16 2024 +0600
+
+    solve tab issues
+
+[33mcommit f2fcf23f047cdffe11b8b3ce1f6f8dfc91502e07[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: MarufsLinux <Muhammedmarufraju@gmail.com>
+Date:   Wed Aug 21 23:23:15 2024 +0600
+
+    solved
+
+[33mcommit be030416884541fbbbb048284b3387773704727a[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Tue Jul 16 17:40:26 2024 +0600
+
+    added jwt
+
+[33mcommit 95ca44ae07f56ba25105b3561fbc1e5ca9e29da7[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Tue Jul 16 06:10:48 2024 +0600
+
+    token implemented for accesing users data
+
+[33mcommit ed5b413c4c7988ea3fd52c765ecb0134ebbe7cb8[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Mon Jul 15 15:44:37 2024 +0600
+
+    after user login token set to the local storeage
+
+[33mcommit c8f5f5fa2a43c92d2654eb401e69f13dda1b08f8[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Mon Jul 15 06:26:38 2024 +0600
+
+    added users delete functionality
+
+[33mcommit 49b7ca866f8e8abf6a93950bf6653ef5b306ad0a[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Sun Jul 14 06:40:26 2024 +0600
+
+    added users page showed users
+
+[33mcommit 5016e13b91f29ff72b64d5970b6e13e791bee884[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Sun Jul 14 04:13:56 2024 +0600
+
+    user data posting to server after register done
+
+[33mcommit 001d8f64df0e59660a460e86160772107c9990b5[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Sat Jul 13 17:10:10 2024 +0600
+
+    my cart design and functionality done
+
+[33mcommit 4ec7e50ddd5d5815fb1865c693dbb3c86ad4d302[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Sat Jul 13 12:40:43 2024 +0600
+
+    added  delete feature to mycart
+
+[33mcommit 7319091c731f1433e27f6a9743051757c247467c[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Sat Jul 13 11:18:34 2024 +0600
+
+    starting making dashboard
+
+[33mcommit 46c7777507ea2f7de32df427cf1fc8f2e8e05871[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Fri Jul 12 18:47:22 2024 +0600
+
+    posting cart data  feature addedJ
+
+[33mcommit 54c334d5abaeecb8da87ff08aa5e4a412de35352[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Fri Jul 12 17:46:18 2024 +0600
+
+    added items cart
+
+[33mcommit 65a3a68b78f9a31a718fe6d9edc96cdc9a07f9f1[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Fri Jul 12 11:35:04 2024 +0600
+
+    added private route
+
+[33mcommit d1d6cfd04878aaa67ce81bdb8f55a6da78cefc2b[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Fri Jul 12 10:49:26 2024 +0600
+
+    register form  validate done
+
+[33mcommit 5efaa2d7ebf21132a505f5f1658fd4fea16c5fbb[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Fri Jul 12 10:26:56 2024 +0600
+
+    added react-hook-form to login and register page
+
+[33mcommit fa2ea233f0fd1a39a026beae69527c53421020c8[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Fri Jul 12 05:32:44 2024 +0600
+
+    login register featured added
+
+[33mcommit b725c40fb260faf6b619b497c4447ebaa3dc96d5[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Wed Jul 10 11:48:47 2024 +0600
+
+    make design to login page
+
+[33mcommit 06a7a3a64b4cfb3581675deaccd00bdd1ba6ded2[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Tue Jul 9 23:15:57 2024 +0600
+
+    added tabs to order page and redirect to order page from our menu pages button
+
+[33mcommit 088fb8b3e63edeb89115e52c3351516a1c659c27[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Tue Jul 9 18:45:05 2024 +0600
+
+    added all requirements sections to the menus page
+
+[33mcommit 8eb6f2b6d63c99b8f0d9a50025c4587f4576fb94[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Tue Jul 9 15:54:50 2024 +0600
+
+    added two new sections to our menu page
+
+[33mcommit 9597bc2e2c913d4d0955c8e93e5c788b97f2718b[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Tue Jul 9 11:43:50 2024 +0600
+
+    added  banner to our menu page
+
+[33mcommit e6c20026d95444b25104241d089442dfedee6be1[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Tue Jul 9 11:28:21 2024 +0600
+
+    added helmet and made the cover components dynamic
+
+[33mcommit 794559c7186bed94cfb8b03d6267cd0ba5e443cc[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Tue Jul 9 07:04:21 2024 +0600
+
+    added chef recommendation section
+
+[33mcommit 6ec99d4e4db8f91657665be10864f4f1bcddeb07[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Tue Jul 9 06:16:16 2024 +0600
+
+    fixed navbar possitioning issue
+
+[33mcommit 73e1fc88bdcb703bf684fb4ae211798bf75f6ac0[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Mon Jul 8 18:17:34 2024 +0600
+
+    added testimonials sections
+
+[33mcommit a415878cb65cffb97b5ad69e39839298482422e9[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Mon Jul 8 16:56:28 2024 +0600
+
+    added features section
+
+[33mcommit e9576114a5880a848fc954a8aa7add197373df63[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Mon Jul 8 15:45:04 2024 +0600
+
+    added  tasty_boss and  menu section
+
+[33mcommit ef5bfcab7cb33e166e05dea5867c6c7e9c0d7cc2[m
+Author: Maruf-Raju-pro <Muhammedmarufraju@gmail.com>
+Date:   Mon Jul 8 12:12:53 2024 +0600
+
+    make home page with navbar footer  banner and catagory seciton

@@ -7,6 +7,7 @@ const useAdmin = () => {
   const axiosSecure = useAxiosSecure();
   const [admin, setAdmin] = useState(false);
   const token = JSON.parse(localStorage.getItem("token"))?.token;
+  
 
   const checkAdmin = async () => {
     if (!loading) {
@@ -16,6 +17,8 @@ const useAdmin = () => {
             authorization: `Bearer ${token}`,
           },
         });
+   
+       
 
         if (data.role === "admin") {
           setAdmin(true);
@@ -23,7 +26,7 @@ const useAdmin = () => {
           setAdmin(false);
         }
       } catch (err) {
-        console.log(`Error checking admin status: ${err.message}`);
+        console.log(`Error checking admin status: ${err}`);
       }
     }
   };

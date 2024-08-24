@@ -8,7 +8,6 @@ const axiosSecure = axios.create({
 });
 
 const useAxiosSecure = () => {
-
   const { logOut } = useAuth();
   const navigate = useNavigate();
 
@@ -20,7 +19,6 @@ const useAxiosSecure = () => {
       return Promise.reject(error);
     }
   );
-
 
   axiosSecure.interceptors.response.use(
     (config) => {
@@ -39,9 +37,10 @@ const useAxiosSecure = () => {
         return Promise.reject(error);
       }
 
-      return error;
+      return Promise.reject(error);
     }
   );
-  
+
+  return axiosSecure;
 };
 export default useAxiosSecure;
