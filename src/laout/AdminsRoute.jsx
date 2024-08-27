@@ -2,7 +2,7 @@ import { FaBook, FaHome, FaUser, FaUtensilSpoon } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { GiStack } from "react-icons/gi";
 
-const AdminsRoute = () => {
+const AdminsRoutes = () => {
   return (
     <>
       <ul className="menu flex flex-col gap-2">
@@ -40,4 +40,4 @@ const AdminsRoute = () => {
   );
 };
 
-export default AdminsRoute;
+export default AdminsRoutes;

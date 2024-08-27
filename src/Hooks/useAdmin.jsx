@@ -6,19 +6,11 @@ const useAdmin = () => {
   const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [admin, setAdmin] = useState(false);
-  const token = JSON.parse(localStorage.getItem("token"))?.token;
-  
 
   const checkAdmin = async () => {
     if (!loading) {
       try {
-        const { data } = await axiosSecure.get(`/users/role/${user?.email}`, {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        });
-   
-       
+        const { data } = await axiosSecure.get(`/users/role/${user?.email}`);
 
         if (data.role === "admin") {
           setAdmin(true);

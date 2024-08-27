@@ -3,16 +3,15 @@ import useAxiosSecure from "./useAxiosSecure";
 
 const useUsers = () => {
   const axiosSecure = useAxiosSecure();
-  const token = JSON.parse(localStorage.getItem("token"))?.token;
 
   const getUser = async () => {
-    const { data } = await axiosSecure.get("/users", {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-
-    return data;
+    try {
+      const { data } = await axiosSecure.get("/users");
+      return data;
+    } catch (err) {
+      console.error("Error fetching users");
+      return [];
+    }
   };
 
   const {

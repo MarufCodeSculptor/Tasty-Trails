@@ -29,7 +29,7 @@ const UserRow = ({ user, index }) => {
         });
 
         console.log("hay sinamika", data);
-        
+
         if (data.modifiedCount > 0) {
           toast.success("User role updated successfully");
           refetch();
@@ -42,8 +42,6 @@ const UserRow = ({ user, index }) => {
   };
 
   const handleDelete = async () => {
-    //  todo : have to cheack user is admin or not if admin then delete he can delete user  if not
-
     //  make a asking before delete with Sweetalert2
     const result = await Swal.fire({
       title: "Are you sure?",
@@ -91,7 +89,11 @@ const UserRow = ({ user, index }) => {
 
       <td>
         {(user?.role === "admin" && "admin") || (
-          <button title="make admin" onClick={() => handleRole(user)} className="btn">
+          <button
+            title="make admin"
+            onClick={() => handleRole(user)}
+            className="btn"
+          >
             <BsPersonLinesFill />
           </button>
         )}

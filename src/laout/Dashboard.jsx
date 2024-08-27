@@ -1,23 +1,19 @@
 import { FaHome } from "react-icons/fa";
 import { BiSolidFoodMenu } from "react-icons/bi";
 import { NavLink, Outlet } from "react-router-dom";
-import AdminsRoute from "./AdminsRoute";
+import AdminsRoutes from "./AdminsRoute";
 import UsersRoute from "./UsersRoute";
 import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
-
-  const [isAdmin] = useAdmin(); 
-
- 
- 
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="flex">
       {/*  navigations bar => =>  */}
       <div className="w-64 min-h-screen bg-purple-600 ">
         <ul className="menu flex flex-col gap-2">
-          {isAdmin ? <AdminsRoute /> : <UsersRoute />}
+          {isAdmin ? <AdminsRoutes /> : <UsersRoute />}
         </ul>
 
         <div className="divider"></div>
