@@ -3,10 +3,7 @@ import UserRow from "./UserRow";
 
 const User = () => {
   const [users, refetch] = useUsers();
-  
-  
   refetch();
-
 
   return (
     <div className="m-10 p-10 bg-white rounded-lg shadow-lg">

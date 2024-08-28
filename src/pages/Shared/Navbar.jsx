@@ -19,10 +19,12 @@ const Navbar = () => {
         <NavLink to={"/order"}> Order </NavLink>
       </li>
       <li>
-        <Link to={'/dashboard/cart'} className=" mx-2">
-          Cart
-          <div className="badge badge-secondary"> +{cart.length} </div>
-        </Link>
+        {user && (
+          <Link to={"/dashboard/cart"} className=" mx-2">
+            Cart
+            <div className="badge badge-secondary"> +{cart.length} </div>
+          </Link>
+        )}
       </li>
     </>
   );

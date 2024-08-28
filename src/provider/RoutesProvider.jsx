@@ -5,11 +5,12 @@ import OurMenu from "../pages/OurMenu/OurMenu";
 import Order from "../pages/Order/Order";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
-// import PrivateRoute from "./PrivateRoute";
+import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../laout/Dashboard";
 import DashboardHome from "../laout/Dashboard/DashboardHome";
 import MyCart from "../laout/Dashboard/MyCart";
 import User from "../laout/Dashboard/Users/User";
+import AdminRoute from "../routes/AdminRoute";
 
 const route = createBrowserRouter([
   {
@@ -53,7 +54,11 @@ const route = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard/home",
@@ -65,7 +70,11 @@ const route = createBrowserRouter([
       },
       {
         path: "/dashboard/users",
-        element: <User />,
+        element: (
+          <AdminRoute>
+            <User />
+          </AdminRoute>
+        ),
       },
     ],
   },

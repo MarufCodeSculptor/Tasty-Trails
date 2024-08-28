@@ -6,7 +6,21 @@ import UsersRoute from "./UsersRoute";
 import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
-  const [isAdmin] = useAdmin();
+  const [isPending, isAdmin, error] = useAdmin();
+
+  if (isPending) {
+    return (
+      <>
+        <div>
+          <h2 className="text-3xl text-center font-bold capitalize">
+            loading...
+          </h2>
+        </div>
+      </>
+    );
+  }
+
+  if (error) return <h3> An error occured ... </h3>;
 
   return (
     <div className="flex">
