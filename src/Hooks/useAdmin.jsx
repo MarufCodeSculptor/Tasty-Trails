@@ -4,8 +4,8 @@ import useAuth from "./useAuth";
 
 const useAdmin = () => {
   const axiosSecure = useAxiosSecure();
-  const { user,loading} = useAuth();
-  if(loading) return
+  const { user, loading } = useAuth();
+  if (loading) return;
 
   const {
     data: isAdmin,
@@ -16,7 +16,6 @@ const useAdmin = () => {
     queryFn: async () => {
       try {
         const { data } = await axiosSecure.get(`/users/role/${user?.email}`);
-        console.log(data,'from admin queryfns');
         return data;
       } catch (err) {
         console.log(err, "from admin cheeck request");
@@ -25,7 +24,6 @@ const useAdmin = () => {
     },
   });
 
-  
   return [isPending, isAdmin, error];
 };
 
