@@ -7,7 +7,7 @@ const AdminsRoutes = () => {
     <>
       <ul className="menu flex flex-col gap-2">
         <li>
-          <NavLink className="bg-pink-200" to="/dashboard/home">
+          <NavLink className="bg-pink-200" to="/dashboard">
             <FaHome /> Admins Home
           </NavLink>
         </li>
