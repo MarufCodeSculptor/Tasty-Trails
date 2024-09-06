@@ -1,25 +1,24 @@
-import { useEffect, useState } from "react";
-
+import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
 const useGetMenuData = () => {
-  const [data, setData] = useState([]);
-
   const axiosPublic = useAxiosPublic();
+const {data:menus}=useQuery({
+    queryFn: async () =>{
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data } = await axiosPublic.get("/menus");
-        setData(data);
-      } catch (err) {
-        console.log(err);
+      try{
+        const {data}=await axiosPublic.get('/menus');
+      console.log('the fucken data',data);
+      return  data; 
       }
-    };
-    getData();
-  }, []);
+      catch(error){
+        console.error('Error fetching data:', error);
+      }
+    }
+  })
 
-  return data;
+ 
+  return menus;
 };
 
 export default useGetMenuData;

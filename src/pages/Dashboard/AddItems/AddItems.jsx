@@ -3,13 +3,25 @@ import SectionHeading from "../../../Components/SectionHeading";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const image_hosting_key = import.meta.env.VITE_IMAGEBB_API;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  },
+});
+
 const AddItems = () => {
   const { register, handleSubmit } = useForm();
-
   const axiosSecure = useAxiosSecure();
 
   const onSubmit = async (formData) => {
@@ -26,14 +38,20 @@ const AddItems = () => {
         const finalData = {
           name: formData.name,
           category: formData.category,
-          price:formData.price,
+          price: formData.price,
           image: res.data.data.display_url,
           recipe: formData.recipe,
 
           // Add more fields as needed...
         };
-        const { data } = await axiosSecure.post("/menus/add",finalData);
-        console.log(data,'menu added successfully');
+        const { data } = await axiosSecure.post("/menus/add", finalData);
+        console.log(data, "menu added successfully");
+        if (data.insertedId) {
+          Toast.fire({
+            icon: "success",
+            title: "Added successfully",
+          });
+        }
       }
     } catch (err) {
       console.log(err, "the error");
