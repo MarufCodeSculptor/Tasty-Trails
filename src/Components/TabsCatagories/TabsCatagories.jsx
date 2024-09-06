@@ -7,8 +7,6 @@ import { useParams } from "react-router-dom";
 
 const TabsCatagories = () => {
   const { category } = useParams();
-  console.log(category, "fucken catagories");
-
   const categories = [
     "dessert",
     "salad",
@@ -18,13 +16,23 @@ const TabsCatagories = () => {
     "drinks",
     "offered",
   ];
-
   let initialIndex = categories.indexOf(category);
+
+
 
   if (initialIndex === -1) initialIndex = 0;
   const [tabIndex, setTabIndex] = useState(initialIndex);
 
-  const allMenus = useGetMenuData();
+  const { menus: allMenus, isLoading, error } = useGetMenuData();
+  
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <h2>data not found</h2>;
+
+  
+
+  
+  
+
   const dessertMenus = allMenus.filter((item) => item.category === "dessert");
   const saladMenus = allMenus.filter((item) => item.category === "salad");
   const pizzaMenus = allMenus.filter((item) => item.category === "pizza");

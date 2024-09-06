@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import Recommendation from "../../Components/Recommendation/Recommendation";
 
 import Menu from "../Shared/Menu/Menu";
@@ -10,6 +9,8 @@ import Catagory from "./Catagory";
 import Fetures from "./Fetures";
 
 const Home = () => {
+ 
+ 
   return (
     <div>
       <CarouselContainer />

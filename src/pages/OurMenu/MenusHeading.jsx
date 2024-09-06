@@ -3,7 +3,9 @@ import SectionHeading from '../../Components/SectionHeading';
 import useGetMenuData from '../../Hooks/useGetMenuData';
 
 const MenusHeading = () => {
-  const recipesAll = useGetMenuData();
+  const { menus:recipesAll, isLoading, error } = useGetMenuData();
+  if (isLoading) return <progress className="progress w-56"></progress>;
+  if (error) return <h2>data not found</h2>;
   const shortedRecipies = recipesAll.slice(0, 4);
 
   return (

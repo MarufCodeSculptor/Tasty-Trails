@@ -17,13 +17,14 @@ const OurMenu = () => {
     imageUrl: banner3,
   };
 
-  const allMenus = useGetMenuData();
-  console.log(allMenus, "ladies and gentement please welcome form all menus ");
+  const { menus, isLoading, error } = useGetMenuData();
+  if (isLoading) return <progress className="progress w-56"></progress>;
+  if (error) return <h2>data not found</h2>;
 
-  const dessertMenus = allMenus?.filter((item) => item.category === "dessert");
-  const saladMenus = allMenus?.filter((item) => item.category === "salad");
-  const pizzaMenus = allMenus?.filter((item) => item.category === "pizza");
-  const soupMenus = allMenus?.filter((item) => item.category === "soup");
+  const dessertMenus = menus?.filter((item) => item.category === "dessert");
+  const saladMenus = menus?.filter((item) => item.category === "salad");
+  const pizzaMenus = menus?.filter((item) => item.category === "pizza");
+  const soupMenus = menus?.filter((item) => item.category === "soup");
 
   const menuCategories = {
     dessert: {
@@ -57,7 +58,7 @@ const OurMenu = () => {
   };
 
   const button = "Order Your Favourite Food";
-  console.log("Menu Categories:", menuCategories);
+  
 
   return (
     <div>

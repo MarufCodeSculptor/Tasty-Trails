@@ -3,22 +3,28 @@ import useAxiosPublic from "./useAxiosPublic";
 
 const useGetMenuData = () => {
   const axiosPublic = useAxiosPublic();
-const {data:menus}=useQuery({
-    queryFn: async () =>{
-
-      try{
-        const {data}=await axiosPublic.get('/menus');
-      console.log('the fucken data',data);
-      return  data; 
-      }
-      catch(error){
-        console.error('Error fetching data:', error);
-      }
+  // the data fetching function =>
+  const getData = async () => {
+    try {
+      const { data } = await axiosPublic.get("/menus");
+      return data;
+    } catch (error) {
+      console.log(error);
+      return null;
     }
-  })
+  };
+  // ................................................
 
- 
-  return menus;
+  const {
+    data: menus,
+    isLoading,
+    error,
+  } = useQuery({
+    queryFn: getData,
+    queryKey: ["menus"],
+  });
+
+  return { menus, isLoading, error };
 };
 
 export default useGetMenuData;

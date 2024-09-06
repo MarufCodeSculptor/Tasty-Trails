@@ -3,14 +3,11 @@ import SectionHeading from "../../../Components/SectionHeading";
 import useGetMenuData from "../../../Hooks/useGetMenuData";
 
 const Menu = () => {
-  
-  const data = useGetMenuData();
-  
-  
-  const popularItems = data.filter((item) => item.category === "popular");
-  
+  const { menus, isLoading, error } = useGetMenuData();
+  if (isLoading) return <progress className="progress w-56"></progress>;
+  if (error) return <h2>data not found</h2>;
 
-    
+  const popularItems = menus.filter((item) => item.category === "popular");
 
   return (
     <section className="my-10">

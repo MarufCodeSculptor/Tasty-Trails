@@ -1,9 +1,10 @@
-import useGetMenuData from '../../Hooks/useGetMenuData';
-import SectionHeading from '../SectionHeading';
-import FoodCard from './RecommendationCard';
+import useGetMenuData from "../../Hooks/useGetMenuData";
+import SectionHeading from "../SectionHeading";
+import FoodCard from "./RecommendationCard";
 
 const Recommendation = () => {
-  const data = useGetMenuData();
+  const { menus, isLoading, error } = useGetMenuData();
+  if (isLoading) return <progress className="progress w-56"></progress>;
 
   function getRandomValues(arr, num) {
     let array = arr.slice();
@@ -14,8 +15,8 @@ const Recommendation = () => {
     }
     return array.slice(0, num);
   }
-  const randomData = getRandomValues(data, 3);
-  console.log(randomData, 'from randomData');
+
+  const randomData = getRandomValues(menus, 3);
 
   return (
     <div>
@@ -24,7 +25,7 @@ const Recommendation = () => {
         subHeading="- - - should try- - - "
       />
       <div className="flex flex-col md:flex-row items-stretch gap-5  ">
-        {randomData.map(item => (
+        {randomData.map((item) => (
           <FoodCard key={item._id} item={item} />
         ))}
       </div>
