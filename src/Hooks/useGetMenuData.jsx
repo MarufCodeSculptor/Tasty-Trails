@@ -19,12 +19,13 @@ const useGetMenuData = () => {
     data: menus,
     isLoading,
     error,
+    refetch
   } = useQuery({
     queryFn: getData,
     queryKey: ["menus"],
   });
 
-  return { menus, isLoading, error };
+  return { menus, isLoading, error ,refetch};
 };
 
 export default useGetMenuData;

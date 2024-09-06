@@ -12,6 +12,7 @@ import MyCart from "../laout/Dashboard/MyCart";
 import User from "../laout/Dashboard/Users/User";
 import AdminRoute from "../routes/AdminRoute";
 import AddItems from "../pages/Dashboard/AddItems/AddItems";
+import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
 
 const route = createBrowserRouter([
   {
@@ -66,15 +67,14 @@ const route = createBrowserRouter([
         element: <DashboardHome />,
       },
       {
-        path: "/dashboard/cart",
-        element: <MyCart />,
+        path: "/dashboard/manage-item",
+        element: <ManageItems />,
       },
       {
         path: "/dashboard/add-item",
         element: (
           <AdminRoute>
-            {" "}
-            <AddItems />{" "}
+            <AddItems />
           </AdminRoute>
         ),
       },

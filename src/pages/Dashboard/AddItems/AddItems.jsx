@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const image_hosting_key = import.meta.env.VITE_IMAGEBB_API;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -21,10 +22,11 @@ const Toast = Swal.mixin({
 });
 
 const AddItems = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,reset } = useForm();
   const axiosSecure = useAxiosSecure();
 
   const onSubmit = async (formData) => {
+    setProccesing(true);
     const imagefile = { image: formData.image[0] };
     // posting image to imagebb=>
     try {
@@ -49,8 +51,11 @@ const AddItems = () => {
         if (data.insertedId) {
           Toast.fire({
             icon: "success",
-            title: "Added successfully",
+            title: `${formData.name} added successfully`,
           });
+          reset();
+          setProccesing(false);
+
         }
       }
     } catch (err) {
@@ -58,6 +63,9 @@ const AddItems = () => {
     }
     // ----------------------------
   };
+
+  const [proccesing, setProccesing] = useState(false);
+  if (proccesing) return <progress className="progress w-56"></progress>;
   return (
     <div className="p-10">
       <SectionHeading
