@@ -5,7 +5,6 @@ import useAuth from "./useAuth";
 const useAdmin = () => {
   const axiosSecure = useAxiosSecure();
   const { user, loading } = useAuth();
-  if (loading) return;
 
   const {
     data: isAdmin,
@@ -23,6 +22,7 @@ const useAdmin = () => {
       }
     },
   });
+  if (loading) return;
 
   return [isPending, isAdmin, error];
 };

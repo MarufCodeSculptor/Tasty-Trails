@@ -26,6 +26,7 @@ const ManageItems = () => {
                     <th>Image</th>
                     <th>Name</th>
                     <th>Price </th>
+                    <th> update </th>
                     <th> action </th>
                   </tr>
                 </thead>

@@ -5,6 +5,7 @@ import FoodCard from "./RecommendationCard";
 const Recommendation = () => {
   const { menus, isLoading, error } = useGetMenuData();
   if (isLoading) return <progress className="progress w-56"></progress>;
+  if(error) return <h2>data not found</h2>
 
   function getRandomValues(arr, num) {
     let array = arr.slice();

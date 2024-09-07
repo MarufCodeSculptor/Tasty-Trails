@@ -6,8 +6,8 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useState } from "react";
 
-const image_hosting_key = import.meta.env.VITE_IMAGEBB_API;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+  const image_hosting_key = import.meta.env.VITE_IMAGEBB_API;
+  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const Toast = Swal.mixin({
   toast: true,

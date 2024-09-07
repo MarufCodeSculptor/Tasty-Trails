@@ -4,9 +4,11 @@ import { AuthContext } from "../../provider/AuthProvider";
 import useCartData from "../../Hooks/useCartData";
 
 const Navbar = () => {
-  const [cart] = useCartData();
-
+  const [cart, , ,error] = useCartData();
   const { user, logOut } = useContext(AuthContext);
+  if(error) return <h3>data not found</h3>
+  
+
   const links = (
     <>
       <li>

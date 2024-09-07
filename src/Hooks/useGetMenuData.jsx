@@ -16,7 +16,7 @@ const useGetMenuData = () => {
   // ................................................
 
   const {
-    data: menus,
+    data: menus=[],
     isLoading,
     error,
     refetch

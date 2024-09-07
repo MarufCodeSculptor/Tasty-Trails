@@ -13,6 +13,7 @@ import User from "../laout/Dashboard/Users/User";
 import AdminRoute from "../routes/AdminRoute";
 import AddItems from "../pages/Dashboard/AddItems/AddItems";
 import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
+import UpdatePage from "../pages/Dashboard/ManageItems/UpdatePage";
 
 const route = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ const route = createBrowserRouter([
       {
         path: "/dashboard/manage-item",
         element: <ManageItems />,
+      },
+      {
+        path: "/dashboard/manage-item/update/:id",
+        element: <UpdatePage/>,
       },
       {
         path: "/dashboard/add-item",

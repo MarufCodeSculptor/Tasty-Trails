@@ -7,7 +7,7 @@ const Menu = () => {
   if (isLoading) return <progress className="progress w-56"></progress>;
   if (error) return <h2>data not found</h2>;
 
-  const popularItems = menus.filter((item) => item.category === "popular");
+  const popularItems = menus?.filter((item) => item.category === "popular");
 
   return (
     <section className="my-10">
