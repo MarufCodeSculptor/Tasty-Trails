@@ -74,6 +74,7 @@ const route = createBrowserRouter([
       {
         path: "/dashboard/manage-item/update/:id",
         element: <UpdatePage/>,
+       
       },
       {
         path: "/dashboard/add-item",

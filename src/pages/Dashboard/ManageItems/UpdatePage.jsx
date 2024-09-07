@@ -3,10 +3,13 @@ import SectionHeading from "../../../Components/SectionHeading";
 
 import { useParams } from "react-router-dom";
 import useSingleMenu from "../../../Hooks/useSingleMenu";
-import { useState } from "react";
+
 import axios from "axios";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useState } from "react";
+
+import LoadingSkleten from "../../../Components/Skleten/LoadingSkleten";
 
 const image_hosting_key = import.meta.env.VITE_IMAGEBB_API;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -24,15 +27,15 @@ const Toast = Swal.mixin({
 });
 
 const UpdatePage = () => {
-  const { register, handleSubmit, reset } = useForm();
-  const params = useParams();
-  const { item } = useSingleMenu(params.id);
-  const { category, image, name, price, recipe, _id } = item;
-  const [proccesing, setProccesing] = useState(false);
   const axiosSecure = useAxiosSecure();
+  const { register, handleSubmit} = useForm();
+  const params = useParams();
+  const { item, refetch } = useSingleMenu(params.id);
+  const [laoding, setLoading] = useState(false);
+  const { category, name, price, recipe, _id } = item;
 
   const onSubmit = async (formData) => {
-    setProccesing(true);
+    setLoading(true);
     const imagefile = { image: formData.image[0] };
     // posting image to imagebb=>
     try {
@@ -43,8 +46,6 @@ const UpdatePage = () => {
       });
 
       if (res.data.success) {
-        //  to do somethin here => 
-          setProccesing(false)
         const finalData = {
           name: formData.name,
           category: formData.category,
@@ -52,26 +53,28 @@ const UpdatePage = () => {
           image: res.data.data.display_url,
           recipe: formData.recipe,
         };
+        const { data } = await axiosSecure.patch(
+          `/menu/update/${_id}`,
+          finalData
+        );
 
-        console.log('The final data',finalData);
+        if (data.modifiedCount > 0) {
+          refetch();
+          Toast.fire({
+            icon: "success",
+            title: "Menu Item Updated Successfully",
+          });
 
-        // const { data } = await axiosSecure.patch(
-        //   `/menu/update/${_id}`,
-        //   finalData
-        // );
-
-        // console.log(data, "menu Updated successfully");
+          setLoading(false);
+        }
       }
-
-
-
     } catch (err) {
       console.log(err, "the error");
     }
     // ----------------------------
   };
 
-  if(proccesing) return <h2> loading... </h2>
+  if (laoding) return <LoadingSkleten />;
 
   return (
     <div>
@@ -126,7 +129,7 @@ const UpdatePage = () => {
                   <span className="label-text">Price*</span>
                 </label>
                 <input
-                defaultValue={price}
+                  defaultValue={price}
                   {...register("price", { required: true })}
                   type="text"
                   placeholder="price"
@@ -141,17 +144,16 @@ const UpdatePage = () => {
                 <span className="label-text">Recipe Details*</span>
               </label>
               <textarea
-               defaultValue={recipe}
+                defaultValue={recipe}
                 {...register("recipe", { required: true })}
                 type="text"
                 placeholder="recipe"
                 className="textarea textarea-bordered min-h-40"
-                required 
+                required
               />
             </div>
             <div className="my-5">
               <input
-              
                 {...register("image", { required: true })}
                 type="file"
                 className="file-input w-full max-w-xs"
