@@ -28,7 +28,7 @@ const Toast = Swal.mixin({
 
 const UpdatePage = () => {
   const axiosSecure = useAxiosSecure();
-  const { register, handleSubmit} = useForm();
+  const { register, handleSubmit } = useForm();
   const params = useParams();
   const { item, refetch } = useSingleMenu(params.id);
   const [laoding, setLoading] = useState(false);
@@ -64,7 +64,6 @@ const UpdatePage = () => {
             icon: "success",
             title: "Menu Item Updated Successfully",
           });
-
           setLoading(false);
         }
       }

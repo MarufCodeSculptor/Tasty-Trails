@@ -4,10 +4,8 @@ import { AuthContext } from "../../provider/AuthProvider";
 import useCartData from "../../Hooks/useCartData";
 
 const Navbar = () => {
-  const [cart, , ,error] = useCartData();
-  const { user, logOut } = useContext(AuthContext);
-  if(error) return <h3>data not found</h3>
-  
+  const [cart, ,isLoading, error] = useCartData();
+  const { user, logOut} = useContext(AuthContext);
 
   const links = (
     <>
@@ -21,7 +19,7 @@ const Navbar = () => {
         <NavLink to={"/order"}> Order </NavLink>
       </li>
       <li>
-        {user && (
+        {user && !isLoading && !error && (
           <Link to={"/dashboard/cart"} className=" mx-2">
             Cart
             <div className="badge badge-secondary"> +{cart.length} </div>

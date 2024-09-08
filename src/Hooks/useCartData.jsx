@@ -14,15 +14,13 @@ const useCartData = () => {
     data: cart = [],
     isLoading,
     error,
-    refetch
+    refetch,
   } = useQuery({
     queryFn: () => laodData(),
     queryKey: ["carts", user?.email],
   });
 
-  console.log(cart);
-
-  return [cart,refetch, isLoading, error];
+  return [cart, refetch, isLoading, error];
 };
 
 export default useCartData;
