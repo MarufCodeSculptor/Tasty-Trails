@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SectionHeading from "../../Components/SectionHeading";
 import useCartData from "../../Hooks/useCartData";
 import MyCartRow from "./MyCartRow";
@@ -26,7 +27,18 @@ const MyCart = () => {
             <h2 className="text-4xl font-bold"> Total Price {sum} </h2>
           </div>
           <div className="min-w-24 min-h-5">
-            <button className="btn bg-dashboardbg"> Pay</button>
+            {cart.length ? (
+              <Link to={"/dashboard/payment"}>
+                <button className="btn bg-dashboardbg"> Pay </button>
+              </Link>
+            ) : (
+              <button
+                disabled={!cart.length > 0}
+                className="btn bg-dashboardbg"
+              >
+                Pay
+              </button>
+            )}
           </div>
         </div>
 
