@@ -3,8 +3,10 @@ import useGetMenuData from "../../../Hooks/useGetMenuData";
 import MangeItemsRow from "./MangeItemsRow";
 
 const ManageItems = () => {
-  const { menus, isLoading, error, refetch } = useGetMenuData();
-  if(isLoading) return <h4>laoding..</h4>
+  const { menus, isLoading,refetch } = useGetMenuData();
+  if (isLoading) return <h4>laoding..</h4>;
+
+  
   return (
     <div>
       <SectionHeading
@@ -15,9 +17,7 @@ const ManageItems = () => {
       <div>
         <div className="">
           <div className=" bg-white min-h-screen rounded-lg shadow-2xl p-10 m-10  ">
-             <h3 className="text-3xl font-bold">
-                Total Items : {menus.length}
-             </h3>
+            <h3 className="text-3xl font-bold">Total Items : {menus.length}</h3>
 
             <div className="overflow-x-auto">
               <table className="table">
@@ -32,7 +32,11 @@ const ManageItems = () => {
                 </thead>
                 <tbody>
                   {menus.map((item) => (
-                    <MangeItemsRow  key={item._id}  item={item} refetch={refetch}   />
+                    <MangeItemsRow
+                      key={item._id}
+                      item={item}
+                      refetch={refetch}
+                    />
                   ))}
                 </tbody>
               </table>

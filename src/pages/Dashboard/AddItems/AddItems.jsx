@@ -5,6 +5,7 @@ import axios from "axios";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import ProgrecBar from "../../../Components/Progress/ProgrecBar";
 
   const image_hosting_key = import.meta.env.VITE_IMAGEBB_API;
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -60,12 +61,18 @@ const AddItems = () => {
       }
     } catch (err) {
       console.log(err, "the error");
+      setProccesing(false);
+      Toast.fire({
+        icon: "error",
+        title: `${formData.name} failed to add`,
+        text: err.message
+      });
     }
     // ----------------------------
   };
 
   const [proccesing, setProccesing] = useState(false);
-  if (proccesing) return <progress className="progress w-56"></progress>;
+  if (proccesing) return <ProgrecBar/>;
   return (
     <div className="p-10">
       <SectionHeading
