@@ -11,9 +11,11 @@ const useAdmin = () => {
     isPending,
     error,
   } = useQuery({
+    enabled: !loading,
     queryKey: [user?.email, "isAdmin"],
     queryFn: async () => {
       try {
+        if(!user) return
         const { data } = await axiosSecure.get(`/users/role/${user?.email}`);
         return data;
       } catch (err) {
@@ -22,8 +24,7 @@ const useAdmin = () => {
       }
     },
   });
-  if (loading) return;
-
+ 
   return [isPending, isAdmin, error];
 };
 

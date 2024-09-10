@@ -2,10 +2,13 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import useCartData from "../../Hooks/useCartData";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Navbar = () => {
-  const [cart, ,isLoading, error] = useCartData();
-  const { user, logOut} = useContext(AuthContext);
+  const [cart, , isLoading, error] = useCartData();
+  const { user, logOut } = useContext(AuthContext);
+
+  const [isPending, isAdmin] = useAdmin();
 
   const links = (
     <>
@@ -18,6 +21,20 @@ const Navbar = () => {
       <li>
         <NavLink to={"/order"}> Order </NavLink>
       </li>
+      {user && !isLoading && !error && !isPending && isAdmin && (
+        <li>
+          <Link to={"/dashboard/admin-home"} className="">
+            Dashboard
+          </Link>
+        </li>
+      )}
+      {user && !isLoading && !error && !isPending && !isAdmin && (
+        <li>
+          <Link to={"/dashboard/user-home"} className="">
+            Dashboard
+          </Link>
+        </li>
+      )}
       <li>
         {user && !isLoading && !error && (
           <Link to={"/dashboard/cart"} className=" mx-2">

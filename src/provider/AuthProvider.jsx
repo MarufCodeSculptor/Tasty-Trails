@@ -58,20 +58,21 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       if (currentUser) {
         const userInfo = { email: currentUser?.email };
-       
 
         try {
           const { data: token } = await axiosPublic.post("/jwt", userInfo);
           localStorage.setItem("token", JSON.stringify(token));
+          setLoading(false);
         } catch (err) {
           console.log(err);
+          setLoading(false);
         }
 
         //  store token to the client
       } else {
+        setLoading(false);
         //  remove token if current user is not found >  token  prorably stored in the local storeage
       }
-      setLoading(false);
     });
 
     return () => {
