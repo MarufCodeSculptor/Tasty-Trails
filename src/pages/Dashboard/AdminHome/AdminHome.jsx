@@ -3,7 +3,8 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaBook, FaDollarSign, FaUser } from "react-icons/fa";
 import { IoShieldCheckmarkSharp } from "react-icons/io5";
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from "recharts";
+import Barchart from "./CustomShapeCart";
+import PiChart from "./PiChart";
 
 const AdminHome = () => {
   const axiosSecure = useAxiosSecure();
@@ -80,7 +81,14 @@ const AdminHome = () => {
         </div>
       </div>
 
-      <div className="border border-red-500 p-10 mt-10"></div>
+      <div className="border border-red-500 p-10 mt-10 flex items-center justify-between">
+      <div className="md:w-1/2">
+      <Barchart data={orderStats} />
+      </div>
+        <div className="md:w-1/2">
+          <PiChart chartData={orderStats}></PiChart>
+        </div>
+      </div>
     </div>
   );
 };
